@@ -1,243 +1,151 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-
-
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" type="text/css" href="/cs.css">
-    <!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />-->
-    <!--    <link-->
-    <!--            rel="stylesheet"-->
-    <!--            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"-->
-    <!--    />-->
-    <!--    <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>-->
-    <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="/cs.css" />
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="/jquery-ui.css" />
     <script src="//code.jquery.com/jquery-1.12.4.js"></script>
     <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 
 <body class="applyImage">
-
-<!--th:value="${keyword}"-->
 <div class="applyLogo">
-
     <form>
-        <input class="container" placeholder="Type Ingredients....." type="text" name="keyword" id="keyword" size="35" />
+        <!--   Search Bar-->
+        <input
+                class="container"
+                placeholder="Type Ingredients....."
+                type="text"
+                name="keyword"
+                id="keyword"
+                size="35"
+        />
         &nbsp;
-<!--        <input type="submit" value="Search"/>-->
-<!--        &lt;!&ndash;        &nbsp;onclick="foo();"&ndash;&gt;-->
-<!--        <input type="button" value="Clear" id="btnClear" onclick="clearSearch()" />-->
-
     </form>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <!--    Search Button-->
     <form class="container1" th:action="@{/search}">
-        <input  type="text" name="keyword" id="keyword1" style="display: none;" size="50" />
-        &nbsp;<br>
+        <input
+                type="text"
+                name="keyword"
+                id="keyword1"
+                style="display: none;"
+                size="50"
+        />
+        &nbsp;<br />
         <input class="button button5" type="submit" value="Search" />
-        <!--        &nbsp;onclick="foo();"-->
     </form>
 
-<ol id="parent" class="huu">
-
-</ol>
+    <!--  For rendering the selected Ingredients-->
+    <ol id="parent" class="huu"></ol>
+    <!--  For my profile link-->
     <div class="profile-link">
-        <a href="https://github.com/aSpanefRost" target="_blank" style="text-decoration: underline;text-weight:bold;color:#303030;">Website By aSpanefRost</a>
+        <a
+                href="https://github.com/aSpanefRost"
+                target="_blank"
+                style="text-decoration: underline;text-weight:bold;color:#303030;"
+        >Website By aSpanefRost</a
+        >
     </div>
 </div>
 </body>
-<!--<script type="text/javascript">-->
-<!--    function clearSearch() {-->
-<!--        window.location = "[[@{/}]]";-->
-<!--    }-->
-
-<!--</script>-->
 <script>
-<!--code to disable enter key in search bar-->
-    $(document).keypress(
-  function(event){
-    if (event.which == '13') {
-      event.preventDefault();
-    }
-});
-</script>
-<script>
-<!--flags selection-->
-   window.onload = function() {
-<!-- alert("let's go!");-->
-<!--Indian Flag-->
-   var x=document.getElementsByClassName('Indian Subcontinent');
-   for (var i = 0; i < x.length; i++) {
-    x[i].src="/images/in.svg";
-  }
-
-
-
-}
-</script>
-<script>
-  $(window).on("load",function() {
-  $(window).scroll(function() {
-    var windowBottom = $(this).scrollTop() + $(this).innerHeight();
-    $(".fade").each(function() {
-      /* Check the location of each desired element */
-      var objectBottom = $(this).offset().top + $(this).outerHeight();
-
-      /* If the element is completely within bounds of the window, fade it in */
-      if (objectBottom < windowBottom) { //object comes into view (scrolling down)
-        if ($(this).css("opacity")==0) {$(this).fadeTo(500,1);}
-      } else { //object goes out of view (scrolling up)
-<!--        if ($(this).css("opacity")==1) {$(this).fadeTo(500,0);}-->
-      }
+    <!--code to disable enter key in search bar-->
+        $(document).keypress(
+      function(event){
+        if (event.which == '13') {
+          event.preventDefault();
+        }
     });
-  }).scroll(); //invoke scroll-handler on page-load
-});
-</script>
+  </script>
 <script>
-    var tags = [
-"Egg","Bread","Rye Bread","Wheaten Bread","White Bread","Wholewheat Bread","Wort","Arrack","Beer","Bantu Beer","Brandy","Anise Brandy","Apple Brandy","Armagnac Brandy","Blackberry Brandy","Cherry Brandy","Cognac Brandy","Papaya Brandy","Pear Brandy","Plum Brandy","Raspberry Brandy","Weinbrand Brandy","Gin","Rum","Whisky","Bourbon Whisky","Canadian Whisky","Finnish Whisky","Japanese Whisky","Malt Whisky","Scotch","Wine","Bilberry Wine","Botrytized Wine","Champagne","Cider","Plum Wine","Port Wine","Red Wine","Rose Wine","Sake","Sherry","Sparkling Wine","Strawberry Wine","White Wine","Coffee","Mate","Black Tea","Green Tea","Roibos Tea","Barley","Crispbread","Malt","Oats","Rice","Corn","Corn Oil","Popcorn","Sweetcorn","Butter","Buttermilk","Cheese","Blue Cheese","Camembert Cheese","Cheddar Cheese","Comte Cheese","Cottage Cheese","Cream Cheese","Domiati Cheese","Emmental Cheese","Feta Cheese","Goat Cheese","Gruyere Cheese","Limburger Cheese","Mozzarella Cheese","Munster Cheese","Parmesan Cheese","Provolone Cheese","Romano Cheese","Roquefort Cheese","Russian Cheese","Sheep Cheese","Swiss Cheese","Tilsit Cheese","Ghee","Milk","Milk Fat","Goat Milk","Milk Powder","Sheep Milk","Skimmed Milk","Yogurt","Achilleas","Arar","Buchu","Cajeput","Camphor","Cascarilla","Cedar","Chamomile","Citronella Oil","Citrus Peel Oil","Eucalyptus Oil","Fir","Geranium","Grapefruit Peel Oil","Grass","Hops Oil","Hyacinth","Hyssop Oil","Lemon Grass","Lemon Peel Oil","Lime Peel Oil","Lovage","Mandarin Orange Peel Oil","Mastic Gum","Mentha Oil","Myrrh","Neroli Oil","Orange Oil","Orris","Clary Sage","Red Sage","Spanish Sage","Sandalwood","Sea Buckthorns","Sweet Grass","Valerian","Wattle","Yarrow","Ylang-Ylang","Clam","Crab","Crayfish","Kelp","Krill","Lobster","Mollusc","Oyster","Prawn","Scallop","Shellfish","Shrimp","Trassi","Squid","Bonito","Caviar","Codfish","Fish","Fatty Fish","Lean Fish","Fish Oil","Smoked Fish","Salmon","Artichoke","Champaca","Jasmine","Lavendar","Rose","Apple","Apple Sauce","Apricot","Avocado","Babaco","Banana","Beli","Byrsonima crassifolia","Cashew Apple","Cherimoya","Coconut","Currant","Black Currant","Red Currant","White Currant","Dates","Durian","Elderberry","Feijoa","Fig","Grape","Guava","Hogplum","Jackfruit","Kiwifruit","Litchi","Loquat","Malay Apple","Mango","Melon","Musk Melon","Naranjilla","Orange","Bitter Orange","Papaya","Mountain Papaya","Passionfruit","Yellow Passionfruit","Pawpaw","Peach","Pear","Bartlett Pear","Prickly Pear","Pepino","Pineapple","Plum","Plumcot","Pumpkin","Quince","Chinese Quince","Raisin","Roseapple","Sapodilla","Soursop","Spineless Monkey Orange","Starfruit","Tamarind","Woodapple","Bilberry","Blackberry","Blueberry","Cherry","Bitter Cherry","Sour Cherry","Sweet Cherry","Cloudberry","Cranberry","Gooseberry","Lingonberry","Loganberry","Raspberry","Strawberry","Strawberry Jam","Bergamot","Citrus Fruits","Grapefruit","Kumquat","Lemon","Lime","Mandarin Orange","Satsuma Orange","Tangerine","Vanilla","Mushroom","Truffle","Angelica","Artemisia","Basil","Buckwheat","Calamus","Chervil","Coriander","Cornmint","Dill","Fennel","Fenugreek","Garlic","Lemon Balm","Liqourice","Mint","Rhubarb","Rosemary","Sage","Spearmint","Scotch Spearmint","Tarragon","Thyme","Beef","Beef Processed","Chicken","Frankfurter Sausage","Ham","Lamb","Meat","Mutton","Pork","Sukiyaki","Turkey","Almond","Brazil Nut","Cocoa","Beans","Lima Beans","Kidney Beans","Peanut","Peas","Soybean","Soybean Oil","Soybean Sauce","Filbert","Hazelnut","Macadamia Nut","Pecans","Walnut","Muskmallow","Sesame","Allium","Alpinia","Ceriman","Chicory","Hops","Laurel","Myrtle","Olive","Pine","Sassafras","Tea","Fermented Tea","Tobacco","Watercress","Creosote","Honey","Macaroni","Mustard Oil","Peanut Butter","Peanut Oil","Rye","Storax","Vinegar","Anise","Anise Hyssop","Star Anise","Caraway","Cardamom","Cassia","Celery","Cinnamon","Clove","Cumin","Ginger","Mace","Marjoram","Nutmeg","Oregano","Parsley","Pepper","Saffron","Turmeric","Green Beans","Chive","Endive","Leek","Lettuce","Okra","Onion","Shallot","Peppermint","Broccoli","Brussels Sprout","Cabbage","Cauliflower","Horseradish","Mustard","Radish","Turnip","Kohlrabi","Rutabaga","Wasabi","Capsicum","Cherry Pepper","Tomato","Chayote","Cucumber","Beetroot","Carrot","Parsnip","Sweet Potato","Asparagus","Cassava","Potato","Fried Potato","Allspice","Asafoetida","Ashgourd","Bittergourd","Bottlegourd","Canola Oil","Carom Seed","Chard","Apple Cider Vinegar","Colocasia","Curry Leaf","Drumstick Leaf","Eggplant","Flaxseed","Jalapeno","Kenaf","Lotus","Nigella Seed","Kewda","Pomegranate","Poppy Seed","Spinach","Turkey Berry","Water Chestnut","White Pepper","Garcinia Indica","Cluster Bean","Paneer","Pigeon Pea","Basmati Rice","Ricotta Cheese","Silver linden","Redskin onion","Lemon verbena","Cashew nut","Burdock","Borage","Capers","Safflower","Chestnut","Chickpea","Pummelo","Arabica coffee","Japanese persimmon","Black crowberry","Rocket salad","Tartary buckwheat","Black huckleberry","Sunflower","Swamp cabbage","Grass pea","Lentils","Garden cress","Mexican oregano","Lupine","Medlar","Mulberry","Black mulberry","Evening primrose","Millet","Scarlet bean","Pistachio","Purslane","Red raspberry","Black raspberry","Sorrel","Summer savory","Winter savory","Cherry tomato","Rowanberry","Sorghum","Dandelion","Linden","Small leaf linden","Wheat","Sparkleberry","Common verbena","Adzuki bean","Gram bean","Mung bean","Climbing bean","Muscadine grape","Bayberry","Elliott\'s blueberry","Canada blueberry","Buffalo currant","Deerberry","Ginseng","Longan","Rambutan","Red rice","Welsh onion","Hard wheat","Triticale","Komatsuna","Pak choy","Jostaberry","Kai lan","Pineappple sage","Skunk currant","Breakfast cereal","Pasta","Biscuit","Sourdough","Spirit","Abalone","Abiyuch","Acerola","Acorn","Winter squash","Agar","Red king crab","Alfalfa","Amaranth","Arrowhead","Arrowroot","Atlantic herring","Atlantic mackerel","Painted comber","Atlantic pollock","Atlantic wolffish","Bamboo shoots","Striped bass","Beaver","Beech nut","Beluga whale","Bison","Black bear","Alaska blackfish","Northern bluefin tuna","Bluefish","Wild boar","Bowhead whale","Breadfruit","Rapini","Brown bear","Buffalo","Burbot","Giant butterbur","American butterfish","Butternut","Butternut squash","Cardoon","Caribou","Natal plum","Carob","Common carp","Channel catfish","Chia","Chinese chestnut","Garland chrysanthemum","Cisco","Nuttall cockle","Common octopus","Corn salad","Cottonseed","Catjang pea","Squashberry","Atlantic croaker","Cusk","Cuttlefish","Mule deer","Devilfish","Dock","Dolphin fish","Freshwater drum","Wild duck","Freshwater eel","Elk","Emu","Oregon yampah","European anchovy","European chestnut","Turbot","Fireweed","Florida pompano","Ginkgo nuts","Greylag goose","Greenland halibut","Groundcherry","Grouper","Haddock","Hippoglossus","Horse","Hyacinth bean","Irish moss","Pacific jack mackerel","Japanese chestnut","Jerusalem artichoke","Jujube","Jute","Kale","King mackerel","Lambsquarters","Leather chiton","Common ling","Lingcod","White lupine","Malabar spinach","Mammee apple","Purple mangosteen","Alpine sweetvetch","Milkfish","Monkfish","Moose","Moth bean","Mountain yam","Striped mullet","Muskrat","New Zealand spinach","Nopal","Ocean pout","North Pacific giant octopus","Ohelo berry","Opossum","Ostrich","Spotted seal","Pacific herring","Pacific rockfish","Common persimmon","Pheasant","Northern pike","Pili nut","Colorado pinyon","Pitanga","French plantain","American pokeweed","Polar bear","Prairie turnip","Quinoa","European rabbit","Raccoon","Rainbow smelt","Rainbow trout","Malabar plum","Rose hip","Roselle","Orange roughy","Sablefish","Pink salmon","Chum salmon","Coho salmon","Sockeye salmon","Chinook salmon","Atlantic salmon","Salmonberry","Common salsify","Spanish mackerel","Pacific sardine","Scup","Sea cucumber","Steller sea lion","Bearded seal","Ringed seal","Sea trout","Sesbania flower","American shad","Shark","Sheefish","Sheepshead","Hedge mustard","Snapper","Spelt","Spirulina","Squab","Squirrel","Greater sturgeon","White sucker","Pumpkinseed sunfish","Swordfish","Taro","Teff","Tilefish","Mexican groundcherry","Towel gourd","Salmonidae","Walleye","Alaska pollock","Whelk","Broad whitefish","Whitefish","Whiting","Wild rice","Tea leaf willow","Winged bean","Yam","Jicama","Yautia","Yellowfin tuna","Yellowtail amberjack","Pollock","Albacore tuna","Atlantic halibut","Smelt","Clupeinae","Spiny lobster","Black-eyed pea","Deer","Percoidei","Perciformes","Rabbit","Beefalo","Bivalvia","Flatfish","Walrus","Alaska wild rhubarb","Oriental wheat","Yardlong bean","Great horned owl","Quail","Boysenberry","Rowal","Jew\'s ear","Shiitake","Purple laver","Wakame","Enokitake","Epazote","Oyster mushroom","Cloud ear fungus","Maitake","Ostrich fern","Spot croaker","Sourdock","Tinda","Atlantic menhaden","Agave","Narrowleaf cattail","Jellyfish","Anchovy","Blue whiting","Carp bream","Chanterelle","Sturgeon","Charr","Common dab","Spiny dogfish","Anatidae","Anguilliformes","True frog","Garfish","Gadiformes","Mountain hare","Lake trout","Lemon sole","Lumpsucker","Scombridae","Norway haddock","Norway pout","Oil palm","Sago palm","Persimmon","Pikeperch","Pleuronectidae","Rock ptarmigan","Pacific ocean perch","Black salsify","True seal","Red algae","Kombu","Snail","True sole","Catfish","Thistle","Common Tuna","Cetacea","Columbidae","Conch","Berry wine","Vodka","Ice cream","Vermouth","Madeira wine","Nougat","Toffee","Cake","Pizza","Ymer","Pastry","Drag̩e","Chewing gum","Marzipan","Salad dressing","Salt","Cream","Sugar","Sausage","Meatball","Pate","Meat bouillon","Whey","Casein","Leavening agent","Marshmallow","Gelatin","Water","Milk Human","Dumpling","Soup","Syrup","Remoulade","Chocolate spread","Fruit gum","Meringue","Cocoa butter","Cocoa powder","Chocolate","Hot chocolate","Kefir","Miso","Tofu","Zwieback","Roe","Cichlidae","Icing","Snack bar","Green turtle","Burrito","Hamburger","Taco","Tortilla","Nachos","Salad","Dulce de leche","Topping","Sweet custard","Egg roll","Heart of palm","Potato chip","Tortilla chip","Corn chip","Hibiscus tea","Stew","Gelatin dessert","Junket","Falafel","Frybread","Lasagna","Morchella","Pancake","Pectin","Pudding","Waffle","Soy milk","Meatloaf","Cocktail","Couscous","Bulgur","Coffee mocha","Chimichanga","Semolina","Tapioca pearl","Tostada","Quesadilla","Baked potato","Hot dog","Spread","Enchilada","Ketchup","Adobo","Horned melon","Hushpuppy","Fruit juice","Relish","Fruit salad","Soy yogurt","Cold cut","Mixed nuts","Babassu palm","Shea tree","Oil-seed Camellia","Ucuhuba","Phyllo dough","Cooking oil","Pie crust","Pie","Shortening","Soy cream","Ice cream cone","Molasses","Nance","Natto","Ravioli","Scrapple","Succotash","Tamale","Rice cake","Tree fern","Evaporated milk","Flour","Akutaq","Pita bread","Focaccia","Bagel","Piki bread","French toast","Oat bread","Potato bread","Cornbread","Corn grits","Multigrain bread","Rice bread","Pan dulce","Raisin bread","Wonton wrapper","Trail mix","Greenthread tea","Vegetable juice","Horchata","Soft drink","Milkshake","Chocolate mousse","Pupusa","Empanada","Arepa","Ascidians","Gefilte fish","Yellow pond lily","Fish burger","Pot pie","Stuffing","Fudge","Candy bar","Condensed milk","Margarine","Hummus","Potato puffs","Potato gratin","Chinese bayberry","Green zucchini","Zucchini","Saskatoon berry","Nanking cherry","Japanese pumpkin","Guinea hen","Cucurbita","Anise Oil","Apple Juice","Coconut Milk","Coconut Oil","Hops Beer","Lemon Juice","Brown Rice","Tomato Juice","Tomato Paste","Tomato Puree","Coriander Seed","Lard","Cured Ham","Cayenne","Yeast","Tequila","Sauerkraut","Baking Powder","Monosodium Glutamate","Citric Acid","Cooking Spray","Gelatin","Food Coloring","Liquid Smoke","Garam Masala","Ginger Garlic Paste","Coriander Cumin Seed Powder","Chaat Masala","Sambar Powder","Chole Masala","Rasam Powder","Tandoori Masala","Curry Powder","Panch Pharon Seed","Chicken Masala Powder","Goda Masala","Jal Jeera Powder","Ginger Garlic Coriander Leaves","Pulao Masala","Dabeli Masala","Cake Mix","Half Half","Ale","Vermicelli","Self Rising Flour","Mayonnaise","Salt-Pepper","Croissant","Puff Pastry","Green Chutney","Cajun Seasoning","Vegetable Broth","Tandoori Paste","Mixed Vegetables","Salad Creme","Worcestershite Sauce","Coleslaw","Vegetable Stock","Mascarpone","Fettuccine","Italian Seasoning","Ketchup","Spinach Fettuccine","Hoisin Sauce","Barbeque Sauce","Sponge Cake","Baking Mix","Hot Sauce","Dried Mixed Fruit","Candied Mixed Fruit","Gulkand","Pancetta","Phyllo","Pie Crust","Prosciutto","Creole Seasoning","Chinese Five Spice Powder","Old Bay Seasoning","Adobo Sauce","Cracker Crumb","Flour","Ranch Dressing","Poultry Seasoning","Tahini","Herbe de Provence","Tart Shell","Adobo","Tomato Puree","Tomato Paste","Bear","Whale","Whitefish","Seal","Tuna","Croaker","Mackerel","Pollock","Anchovy","Perch","Frybread","Sturgeon","Hibiscus Tea","Deer","Octopus","Oat Bread","Pita Bread","Raisin Bread","Multigrain Bread","Cornbread","Pout","Herring","Smelt","Crab","Cooking Oil","Rice Cake","Trout","Lobster","Halibut","Whiting","Buffalo","Catfish","Salmon","Rabbit","Haddock","Persimmon","Apple Sauce","Cider Vinegar"
-];
-$( "#keyword" ).autocomplete({
-  source: function( request, response ) {
-          var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
-          response( $.grep( tags, function( item ){
-<!--              console.log(item);-->
-              return matcher.test( item );
-          }) );
-      },
-      minLength: 2,
-     select: function( event, ui ) {
-      <!-- removing the selected option from array-->
-     const index = tags.indexOf(ui.item.value);
-     if (index > -1) {
-     tags.splice(index, 1);
-      }
-<!--     type = document.createElement(ui.item.value);-->
-<!--     document.getElementById("parent").appendChild(type);-->
-     var para = document.createElement("BUTTON");
-     para.className += "btn";
-     var para1=document.createElement("I");
-     para1.innerHTML=ui.item.value;
-     para1.className += "fa fa-close";
-     para.innerHTML = para1.outerHTML;
-     para1.remove();
-<!--     para.style.cssText='background-color: DodgerBlue;border: none; font-style:bold;color: white; padding: 12px 12px; margin-right:50 px; font-size: 16px; cursor: pointer;';-->
-<!--     para:hover{background-color: #4169e1;};-->
-     para.setAttribute("onmouseover","this.style.backgroundColor='#15751a'");
-     para.setAttribute("onmouseout","this.style.backgroundColor='#1a8f20'");
-     para.setAttribute("margin-top","5px");
-     para.setAttribute("margin-bottom","5px");
-     para.setAttribute("id",ui.item.value);
-     para.setAttribute("key",1);
-<!--     para.setAttribute("onclick",myFunction(ui.item.value));-->
-<!--     para.addEventListener("click", myFunction(ui.item.value, false);-->
-<!--myFunction(ui.item.value)-->
-<!--     console.log(para.class);-->
-
-<!--  var t = document.createTextNode(ui.item.value);-->
-
-<!--  para.appendChild(t);-->
-  document.getElementById("parent").appendChild(para);
-
-<!--  var variable=document.getElementById(ui.item.value);-->
-
-
-  document.getElementById("parent").appendChild (document.createTextNode(" "));
-  ui.item.value=null;
-  var targetDiv = document.getElementById("parent").querySelectorAll("BUTTON");
-<!--  console.log(targetDiv[0].textContent);-->
-<!--  console.log(targetDiv[0].class);-->
-<!--  console.log(targetDiv.length);-->
-  foo();
-<!--      appendTo: "#parent" ;-->
-      console.log( ui.item.label, ui.item.value );
-       }
-
-});
-
-<!--$( ".selector" ).autocomplete({-->
-<!--  appendTo: "#parent"-->
-<!--});-->
-
-
-<!--function showResult(event, ui) {-->
-<!-- // var s=text(ui.item.value);-->
-<!--   $('#parent').append(ui.item.label)-->
-<!-- }-->
-
-
-</script>
-<script type="text/javascript">
-       function myFunction(a) {
-      console.log("upcoming value");
-      console.log(a);
-      var myobj = document.getElementById(a);
-      myobj.remove();
-      tags.push(a);
+    <!--jquery autocomplete code for searching in the search bar-->
+        var tags = [
+    "Egg","Bread","Rye Bread","Wheaten Bread","White Bread","Wholewheat Bread","Wort","Arrack","Beer","Bantu Beer","Brandy","Anise Brandy","Apple Brandy","Armagnac Brandy","Blackberry Brandy","Cherry Brandy","Cognac Brandy","Papaya Brandy","Pear Brandy","Plum Brandy","Raspberry Brandy","Weinbrand Brandy","Gin","Rum","Whisky","Bourbon Whisky","Canadian Whisky","Finnish Whisky","Japanese Whisky","Malt Whisky","Scotch","Wine","Bilberry Wine","Botrytized Wine","Champagne","Cider","Plum Wine","Port Wine","Red Wine","Rose Wine","Sake","Sherry","Sparkling Wine","Strawberry Wine","White Wine","Coffee","Mate","Black Tea","Green Tea","Roibos Tea","Barley","Crispbread","Malt","Oats","Rice","Corn","Corn Oil","Popcorn","Sweetcorn","Butter","Buttermilk","Cheese","Blue Cheese","Camembert Cheese","Cheddar Cheese","Comte Cheese","Cottage Cheese","Cream Cheese","Domiati Cheese","Emmental Cheese","Feta Cheese","Goat Cheese","Gruyere Cheese","Limburger Cheese","Mozzarella Cheese","Munster Cheese","Parmesan Cheese","Provolone Cheese","Romano Cheese","Roquefort Cheese","Russian Cheese","Sheep Cheese","Swiss Cheese","Tilsit Cheese","Ghee","Milk","Milk Fat","Goat Milk","Milk Powder","Sheep Milk","Skimmed Milk","Yogurt","Achilleas","Arar","Buchu","Cajeput","Camphor","Cascarilla","Cedar","Chamomile","Citronella Oil","Citrus Peel Oil","Eucalyptus Oil","Fir","Geranium","Grapefruit Peel Oil","Grass","Hops Oil","Hyacinth","Hyssop Oil","Lemon Grass","Lemon Peel Oil","Lime Peel Oil","Lovage","Mandarin Orange Peel Oil","Mastic Gum","Mentha Oil","Myrrh","Neroli Oil","Orange Oil","Orris","Clary Sage","Red Sage","Spanish Sage","Sandalwood","Sea Buckthorns","Sweet Grass","Valerian","Wattle","Yarrow","Ylang-Ylang","Clam","Crab","Crayfish","Kelp","Krill","Lobster","Mollusc","Oyster","Prawn","Scallop","Shellfish","Shrimp","Trassi","Squid","Bonito","Caviar","Codfish","Fish","Fatty Fish","Lean Fish","Fish Oil","Smoked Fish","Salmon","Artichoke","Champaca","Jasmine","Lavendar","Rose","Apple","Apple Sauce","Apricot","Avocado","Babaco","Banana","Beli","Byrsonima crassifolia","Cashew Apple","Cherimoya","Coconut","Currant","Black Currant","Red Currant","White Currant","Dates","Durian","Elderberry","Feijoa","Fig","Grape","Guava","Hogplum","Jackfruit","Kiwifruit","Litchi","Loquat","Malay Apple","Mango","Melon","Musk Melon","Naranjilla","Orange","Bitter Orange","Papaya","Mountain Papaya","Passionfruit","Yellow Passionfruit","Pawpaw","Peach","Pear","Bartlett Pear","Prickly Pear","Pepino","Pineapple","Plum","Plumcot","Pumpkin","Quince","Chinese Quince","Raisin","Roseapple","Sapodilla","Soursop","Spineless Monkey Orange","Starfruit","Tamarind","Woodapple","Bilberry","Blackberry","Blueberry","Cherry","Bitter Cherry","Sour Cherry","Sweet Cherry","Cloudberry","Cranberry","Gooseberry","Lingonberry","Loganberry","Raspberry","Strawberry","Strawberry Jam","Bergamot","Citrus Fruits","Grapefruit","Kumquat","Lemon","Lime","Mandarin Orange","Satsuma Orange","Tangerine","Vanilla","Mushroom","Truffle","Angelica","Artemisia","Basil","Buckwheat","Calamus","Chervil","Coriander","Cornmint","Dill","Fennel","Fenugreek","Garlic","Lemon Balm","Liqourice","Mint","Rhubarb","Rosemary","Sage","Spearmint","Scotch Spearmint","Tarragon","Thyme","Beef","Beef Processed","Chicken","Frankfurter Sausage","Ham","Lamb","Meat","Mutton","Pork","Sukiyaki","Turkey","Almond","Brazil Nut","Cocoa","Beans","Lima Beans","Kidney Beans","Peanut","Peas","Soybean","Soybean Oil","Soybean Sauce","Filbert","Hazelnut","Macadamia Nut","Pecans","Walnut","Muskmallow","Sesame","Allium","Alpinia","Ceriman","Chicory","Hops","Laurel","Myrtle","Olive","Pine","Sassafras","Tea","Fermented Tea","Tobacco","Watercress","Creosote","Honey","Macaroni","Mustard Oil","Peanut Butter","Peanut Oil","Rye","Storax","Vinegar","Anise","Anise Hyssop","Star Anise","Caraway","Cardamom","Cassia","Celery","Cinnamon","Clove","Cumin","Ginger","Mace","Marjoram","Nutmeg","Oregano","Parsley","Pepper","Saffron","Turmeric","Green Beans","Chive","Endive","Leek","Lettuce","Okra","Onion","Shallot","Peppermint","Broccoli","Brussels Sprout","Cabbage","Cauliflower","Horseradish","Mustard","Radish","Turnip","Kohlrabi","Rutabaga","Wasabi","Capsicum","Cherry Pepper","Tomato","Chayote","Cucumber","Beetroot","Carrot","Parsnip","Sweet Potato","Asparagus","Cassava","Potato","Fried Potato","Allspice","Asafoetida","Ashgourd","Bittergourd","Bottlegourd","Canola Oil","Carom Seed","Chard","Apple Cider Vinegar","Colocasia","Curry Leaf","Drumstick Leaf","Eggplant","Flaxseed","Jalapeno","Kenaf","Lotus","Nigella Seed","Kewda","Pomegranate","Poppy Seed","Spinach","Turkey Berry","Water Chestnut","White Pepper","Garcinia Indica","Cluster Bean","Paneer","Pigeon Pea","Basmati Rice","Ricotta Cheese","Silver linden","Redskin onion","Lemon verbena","Cashew nut","Burdock","Borage","Capers","Safflower","Chestnut","Chickpea","Pummelo","Arabica coffee","Japanese persimmon","Black crowberry","Rocket salad","Tartary buckwheat","Black huckleberry","Sunflower","Swamp cabbage","Grass pea","Lentils","Garden cress","Mexican oregano","Lupine","Medlar","Mulberry","Black mulberry","Evening primrose","Millet","Scarlet bean","Pistachio","Purslane","Red raspberry","Black raspberry","Sorrel","Summer savory","Winter savory","Cherry tomato","Rowanberry","Sorghum","Dandelion","Linden","Small leaf linden","Wheat","Sparkleberry","Common verbena","Adzuki bean","Gram bean","Mung bean","Climbing bean","Muscadine grape","Bayberry","Elliott\'s blueberry","Canada blueberry","Buffalo currant","Deerberry","Ginseng","Longan","Rambutan","Red rice","Welsh onion","Hard wheat","Triticale","Komatsuna","Pak choy","Jostaberry","Kai lan","Pineappple sage","Skunk currant","Breakfast cereal","Pasta","Biscuit","Sourdough","Spirit","Abalone","Abiyuch","Acerola","Acorn","Winter squash","Agar","Red king crab","Alfalfa","Amaranth","Arrowhead","Arrowroot","Atlantic herring","Atlantic mackerel","Painted comber","Atlantic pollock","Atlantic wolffish","Bamboo shoots","Striped bass","Beaver","Beech nut","Beluga whale","Bison","Black bear","Alaska blackfish","Northern bluefin tuna","Bluefish","Wild boar","Bowhead whale","Breadfruit","Rapini","Brown bear","Buffalo","Burbot","Giant butterbur","American butterfish","Butternut","Butternut squash","Cardoon","Caribou","Natal plum","Carob","Common carp","Channel catfish","Chia","Chinese chestnut","Garland chrysanthemum","Cisco","Nuttall cockle","Common octopus","Corn salad","Cottonseed","Catjang pea","Squashberry","Atlantic croaker","Cusk","Cuttlefish","Mule deer","Devilfish","Dock","Dolphin fish","Freshwater drum","Wild duck","Freshwater eel","Elk","Emu","Oregon yampah","European anchovy","European chestnut","Turbot","Fireweed","Florida pompano","Ginkgo nuts","Greylag goose","Greenland halibut","Groundcherry","Grouper","Haddock","Hippoglossus","Horse","Hyacinth bean","Irish moss","Pacific jack mackerel","Japanese chestnut","Jerusalem artichoke","Jujube","Jute","Kale","King mackerel","Lambsquarters","Leather chiton","Common ling","Lingcod","White lupine","Malabar spinach","Mammee apple","Purple mangosteen","Alpine sweetvetch","Milkfish","Monkfish","Moose","Moth bean","Mountain yam","Striped mullet","Muskrat","New Zealand spinach","Nopal","Ocean pout","North Pacific giant octopus","Ohelo berry","Opossum","Ostrich","Spotted seal","Pacific herring","Pacific rockfish","Common persimmon","Pheasant","Northern pike","Pili nut","Colorado pinyon","Pitanga","French plantain","American pokeweed","Polar bear","Prairie turnip","Quinoa","European rabbit","Raccoon","Rainbow smelt","Rainbow trout","Malabar plum","Rose hip","Roselle","Orange roughy","Sablefish","Pink salmon","Chum salmon","Coho salmon","Sockeye salmon","Chinook salmon","Atlantic salmon","Salmonberry","Common salsify","Spanish mackerel","Pacific sardine","Scup","Sea cucumber","Steller sea lion","Bearded seal","Ringed seal","Sea trout","Sesbania flower","American shad","Shark","Sheefish","Sheepshead","Hedge mustard","Snapper","Spelt","Spirulina","Squab","Squirrel","Greater sturgeon","White sucker","Pumpkinseed sunfish","Swordfish","Taro","Teff","Tilefish","Mexican groundcherry","Towel gourd","Salmonidae","Walleye","Alaska pollock","Whelk","Broad whitefish","Whitefish","Whiting","Wild rice","Tea leaf willow","Winged bean","Yam","Jicama","Yautia","Yellowfin tuna","Yellowtail amberjack","Pollock","Albacore tuna","Atlantic halibut","Smelt","Clupeinae","Spiny lobster","Black-eyed pea","Deer","Percoidei","Perciformes","Rabbit","Beefalo","Bivalvia","Flatfish","Walrus","Alaska wild rhubarb","Oriental wheat","Yardlong bean","Great horned owl","Quail","Boysenberry","Rowal","Jew\'s ear","Shiitake","Purple laver","Wakame","Enokitake","Epazote","Oyster mushroom","Cloud ear fungus","Maitake","Ostrich fern","Spot croaker","Sourdock","Tinda","Atlantic menhaden","Agave","Narrowleaf cattail","Jellyfish","Anchovy","Blue whiting","Carp bream","Chanterelle","Sturgeon","Charr","Common dab","Spiny dogfish","Anatidae","Anguilliformes","True frog","Garfish","Gadiformes","Mountain hare","Lake trout","Lemon sole","Lumpsucker","Scombridae","Norway haddock","Norway pout","Oil palm","Sago palm","Persimmon","Pikeperch","Pleuronectidae","Rock ptarmigan","Pacific ocean perch","Black salsify","True seal","Red algae","Kombu","Snail","True sole","Catfish","Thistle","Common Tuna","Cetacea","Columbidae","Conch","Berry wine","Vodka","Ice cream","Vermouth","Madeira wine","Nougat","Toffee","Cake","Pizza","Ymer","Pastry","Drag̩e","Chewing gum","Marzipan","Salad dressing","Salt","Cream","Sugar","Sausage","Meatball","Pate","Meat bouillon","Whey","Casein","Leavening agent","Marshmallow","Gelatin","Water","Milk Human","Dumpling","Soup","Syrup","Remoulade","Chocolate spread","Fruit gum","Meringue","Cocoa butter","Cocoa powder","Chocolate","Hot chocolate","Kefir","Miso","Tofu","Zwieback","Roe","Cichlidae","Icing","Snack bar","Green turtle","Burrito","Hamburger","Taco","Tortilla","Nachos","Salad","Dulce de leche","Topping","Sweet custard","Egg roll","Heart of palm","Potato chip","Tortilla chip","Corn chip","Hibiscus tea","Stew","Gelatin dessert","Junket","Falafel","Frybread","Lasagna","Morchella","Pancake","Pectin","Pudding","Waffle","Soy milk","Meatloaf","Cocktail","Couscous","Bulgur","Coffee mocha","Chimichanga","Semolina","Tapioca pearl","Tostada","Quesadilla","Baked potato","Hot dog","Spread","Enchilada","Ketchup","Adobo","Horned melon","Hushpuppy","Fruit juice","Relish","Fruit salad","Soy yogurt","Cold cut","Mixed nuts","Babassu palm","Shea tree","Oil-seed Camellia","Ucuhuba","Phyllo dough","Cooking oil","Pie crust","Pie","Shortening","Soy cream","Ice cream cone","Molasses","Nance","Natto","Ravioli","Scrapple","Succotash","Tamale","Rice cake","Tree fern","Evaporated milk","Flour","Akutaq","Pita bread","Focaccia","Bagel","Piki bread","French toast","Oat bread","Potato bread","Cornbread","Corn grits","Multigrain bread","Rice bread","Pan dulce","Raisin bread","Wonton wrapper","Trail mix","Greenthread tea","Vegetable juice","Horchata","Soft drink","Milkshake","Chocolate mousse","Pupusa","Empanada","Arepa","Ascidians","Gefilte fish","Yellow pond lily","Fish burger","Pot pie","Stuffing","Fudge","Candy bar","Condensed milk","Margarine","Hummus","Potato puffs","Potato gratin","Chinese bayberry","Green zucchini","Zucchini","Saskatoon berry","Nanking cherry","Japanese pumpkin","Guinea hen","Cucurbita","Anise Oil","Apple Juice","Coconut Milk","Coconut Oil","Hops Beer","Lemon Juice","Brown Rice","Tomato Juice","Tomato Paste","Tomato Puree","Coriander Seed","Lard","Cured Ham","Cayenne","Yeast","Tequila","Sauerkraut","Baking Powder","Monosodium Glutamate","Citric Acid","Cooking Spray","Gelatin","Food Coloring","Liquid Smoke","Garam Masala","Ginger Garlic Paste","Coriander Cumin Seed Powder","Chaat Masala","Sambar Powder","Chole Masala","Rasam Powder","Tandoori Masala","Curry Powder","Panch Pharon Seed","Chicken Masala Powder","Goda Masala","Jal Jeera Powder","Ginger Garlic Coriander Leaves","Pulao Masala","Dabeli Masala","Cake Mix","Half Half","Ale","Vermicelli","Self Rising Flour","Mayonnaise","Salt-Pepper","Croissant","Puff Pastry","Green Chutney","Cajun Seasoning","Vegetable Broth","Tandoori Paste","Mixed Vegetables","Salad Creme","Worcestershite Sauce","Coleslaw","Vegetable Stock","Mascarpone","Fettuccine","Italian Seasoning","Ketchup","Spinach Fettuccine","Hoisin Sauce","Barbeque Sauce","Sponge Cake","Baking Mix","Hot Sauce","Dried Mixed Fruit","Candied Mixed Fruit","Gulkand","Pancetta","Phyllo","Pie Crust","Prosciutto","Creole Seasoning","Chinese Five Spice Powder","Old Bay Seasoning","Adobo Sauce","Cracker Crumb","Flour","Ranch Dressing","Poultry Seasoning","Tahini","Herbe de Provence","Tart Shell","Adobo","Tomato Puree","Tomato Paste","Bear","Whale","Whitefish","Seal","Tuna","Croaker","Mackerel","Pollock","Anchovy","Perch","Frybread","Sturgeon","Hibiscus Tea","Deer","Octopus","Oat Bread","Pita Bread","Raisin Bread","Multigrain Bread","Cornbread","Pout","Herring","Smelt","Crab","Cooking Oil","Rice Cake","Trout","Lobster","Halibut","Whiting","Buffalo","Catfish","Salmon","Rabbit","Haddock","Persimmon","Apple Sauce","Cider Vinegar"
+    ];
+    $( "#keyword" ).autocomplete({
+      source: function( request, response ) {
+              var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
+              response( $.grep( tags, function( item ){
+                  return matcher.test( item );
+              }) );
+          },
+          minLength: 2,
+         select: function( event, ui ) {
+          <!-- removing the selected option from array-->
+         const index = tags.indexOf(ui.item.value);
+         if (index > -1) {
+         tags.splice(index, 1);
+          }
+        <!-- creating a button element with the selected text from auto-complete -->
+         var para = document.createElement("BUTTON");
+         para.className += "btn";
+         var para1=document.createElement("I");
+         para1.innerHTML=ui.item.value;
+         para1.className += "fa fa-close";
+         para.innerHTML = para1.outerHTML;
+         para1.remove();
+         para.setAttribute("onmouseover","this.style.backgroundColor='#15751a'");
+         para.setAttribute("onmouseout","this.style.backgroundColor='#1a8f20'");
+         para.setAttribute("margin-top","5px");
+         para.setAttribute("margin-bottom","5px");
+         para.setAttribute("id",ui.item.value);
+         para.setAttribute("key",1);
+    <!--  appending the button element in the parent element-->
+      document.getElementById("parent").appendChild(para);
+      document.getElementById("parent").appendChild (document.createTextNode(" "));
+      ui.item.value=null;
+      var targetDiv = document.getElementById("parent").querySelectorAll("BUTTON");
       foo();
-<!--     if(myobj)-->
-<!--     {-->
-<!--      console.log("hola hola");-->
-<!--      console.log(a);-->
-<!--      console.log(a);-->
-<!--      if(myobj.getAttribute("key")==1)-->
-<!--      {-->
-<!--      console.log(11);-->
-<!--      myobj.setAttribute("key",2);-->
-<!--      }-->
-<!--      else if(myobj.getAttribute("key")==2)-->
-<!--      {-->
-<!--        console.log(22);-->
-<!--        myobj.remove();-->
-<!--      }-->
-<!--     }-->
-<!--     else-->
-<!--     {-->
-<!--     console.log("gola gola");-->
-<!--     }-->
-     return false;
-   }
-</script>
+      console.log( ui.item.label, ui.item.value );
+           }
+
+    });
+  </script>
+<script type="text/javascript">
+    <!--whenever a keyword is selected from the options, removing that options from the tags list. so that it can't selected again-->
+           function myFunction(a) {
+          console.log("upcoming value");
+          console.log(a);
+          var myobj = document.getElementById(a);
+          myobj.remove();
+          tags.push(a);
+          foo();
+         return false;
+       }
+  </script>
 <script th:inline="javascript">
-    function foo() {
-    var targetDiv = document.getElementById("parent").querySelectorAll("BUTTON");
+    <!--Function to get all the ingredients that is selected-->
+        function foo() {
+        var targetDiv = document.getElementById("parent").querySelectorAll("BUTTON");
+        var len=targetDiv.length;
+        var tar1=[];
+        for(i=0;i<len;i++)
+        {
+         var el=targetDiv[i];
+         tar1[i]=(el.textContent || el.innerText || '');
 
-<!--    s = targetDiv.join("+");-->
-    var len=targetDiv.length;
-<!--    alert(targetDiv[len-1].textContent);-->
-    var tar1=[];
-    for(i=0;i<len;i++)
-    {
-<!--     tar1[i]=targetDiv[i].textContent;-->
-<!--     console.log(targetDiv[i].textContent);-->
-     var el=targetDiv[i];
-<!--     console.log(el.textContent || el.innerText || '');-->
-        tar1[i]=(el.textContent || el.innerText || '');
-
+        }
+          var elliment=targetDiv[len-1];
+           elliment.onclick = function(){
+         myFunction(tar1[len-1]);
+       }
+          s=tar1.join("+");
+           var attr = document.createAttribute("th:value");
+           attr.value = s;
+           var h = document.getElementById("keyword");
+           h.setAttributeNode(attr);
+           document.getElementById("keyword1").value=s;
+           console.log( document.getElementById("keyword1").value);
+           return true;
     }
-      var elliment=targetDiv[len-1];
-       elliment.onclick = function(){
-     myFunction(tar1[len-1]);
-   }
-<!--          elliment.setAttribute("onclick",myFunction(tar1[len-1]));-->
-<!--    s = tar1[0]+tar1[1];-->
-      s=tar1.join("+");
-
-<!--      th:value=s;-->
-       var attr = document.createAttribute("th:value");
-       attr.value = s;
-       var h = document.getElementById("keyword");
-       h.setAttributeNode(attr);
-<!--       alert(document.getElementById("keyword").getAttribute("th:value"));-->
-       document.getElementById("keyword1").value=s;
-       console.log( document.getElementById("keyword1").value);
-       return true;
-}
-</script>
+  </script>
 </html>

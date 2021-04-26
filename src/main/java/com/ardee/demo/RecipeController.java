@@ -26,15 +26,8 @@ public class RecipeController {
 
     @RequestMapping("/search")
     public String homePage(Model model,@Param("keyword") String keyword){
-        // @Param("keyword") String keyword
-//       List<Recipe> listRecipe=service.listAll();
 
         Set<String> ingredients = new HashSet<>();
-        // filling the set with any number of items
-
-
-        //List<Recipe> listRecipe=service.listSelective("banana");
-//        ingredients.add("cumin");
 
         if(keyword==null)
         {
@@ -50,14 +43,11 @@ public class RecipeController {
         {
             ingredients.add(stringarray[i].toLowerCase());
         }
-
-      //  ingredients.add(keyword);
         List<Recipe> listRecipe=service.listSelective(ingredients);
         int n=listRecipe.size();
         System.out.println(n);
         model.addAttribute("listrecipe", listRecipe);
         model.addAttribute("numrecipe",n);
-      //  model.addAttribute("keyword", keyword+"+");
         System.out.print("Get / ");
         System.out.println(listRecipe.size());
         return "recipes";

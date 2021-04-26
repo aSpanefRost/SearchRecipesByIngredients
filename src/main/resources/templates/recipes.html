@@ -5,21 +5,14 @@
 
 <head>
     <link rel="stylesheet" type="text/css" href="/cs.css">
-    <!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />-->
-    <!--    <link-->
-    <!--            rel="stylesheet"-->
-    <!--            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"-->
-    <!--    />-->
-    <!--    <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>-->
-    <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
     <script src="//code.jquery.com/jquery-1.12.4.js"></script>
     <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <body class="applyImage2">
+<!--rendering all the recipes-->
 <div class="mimi">
-    <!--    <tr>-->
     <h2 style="margin-left:30px;color:#1a8f20;font-weight:bold;font-size:40px;"><span th:text="${numrecipe}"></span><span > Recipes Found</span></h2>
     <div class="col-sm-5" align = "center">
         <div class="panel-body" align = "center" >
@@ -30,15 +23,7 @@
                     <div id="myList" class="element">
                         <p style="font-size:22px;font-weight:bold">Recipe:   <span th:text="${recipe.Title}" style="font-size:23px;font-weight:normal;text-transform: capitalize;"></span></p>
                         <p style="margin:0"><span style="font-size:22px;font-weight:bold;">Cuisine:  </span><span th:text="${recipe.Cuisine}" style="font-size:23px;font-weight:normal;margin-right:20px;"></span><span style="display:inline-block; vertical-align: top;"><img  th:class="${recipe.Cuisine}" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Indian Cuisine" style="width:50px;height:50px;border-radius:30%"></span> <span style="font-size:22px;font-weight:bold;margin-left:100px">Source: </span><span th:text="${recipe.Source}" style="font-size:23px;font-weight:normal"></span><span style="display:inline-block; margin-left:300px; "><form th:action="${recipe.Links}" target="_blank"><input class="button button4" type="submit" value="Full Recipe" /></form></span></p>
-<!--                        <p style="margin-left:110px; margin-top:0px;"><img  th:class="${recipe.Cuisine}" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Indian Cuisine" style="width:50px;height:50px;border-radius:30%"></p>-->
                         <p style="font-size:22px;font-weight:bold; margin-top: 5px">Ingredients:   <span th:text="${recipe.Ingredients}" style="font-size:23px;font-weight:normal; text-transform: capitalize;"></span></p>
-<!--                    <td th:text="${recipe.Recipe_Id}"></td>-->
-<!--                    <td th:text="${recipe.Title}"></td>-->
-<!--                    <td th:text="${recipe.Source}"></td>-->
-<!--                    &lt;!&ndash;                            <td th:text="${recipe.Cuisine}">Cuisine</td>&ndash;&gt;-->
-<!--                    <td> <img th:class="${recipe.Cuisine}" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Indian Cuisine" style="width:50px;height:50px;"></td>-->
-<!--                    <td th:text="${recipe.Ingredients}"></td>-->
-<!--                    <td th:text="${recipe.Links}" ></td>-->
                     </div>
                 </tr>
 
@@ -48,21 +33,11 @@
         </div>
 
     </div>
-
-    <!--    </tr>-->
 </div>
 </body>
-<!--<script type="text/javascript">-->
-<!--    function clearSearch() {-->
-<!--        window.location = "[[@{/}]]";-->
-<!--    }-->
-
-<!--</script>-->
-
 <script>
 <!--flags selection-->
    window.onload = function() {
-<!-- alert("let's go!");-->
 <!--Indian Flag-->
    var x=document.getElementsByClassName('Indian Subcontinent');
    for (var i = 0; i < x.length; i++) {
@@ -200,166 +175,6 @@
   }
 
 
-}
-</script>
-<script>
-  $(window).on("load",function() {
-  $(window).scroll(function() {
-    var windowBottom = $(this).scrollTop() + $(this).innerHeight();
-    $(".fade").each(function() {
-      /* Check the location of each desired element */
-      var objectBottom = $(this).offset().top + $(this).outerHeight();
-
-      /* If the element is completely within bounds of the window, fade it in */
-      if (objectBottom < windowBottom) { //object comes into view (scrolling down)
-        if ($(this).css("opacity")==0) {$(this).fadeTo(500,1);}
-      } else { //object goes out of view (scrolling up)
-<!--        if ($(this).css("opacity")==1) {$(this).fadeTo(500,0);}-->
-      }
-    });
-  }).scroll(); //invoke scroll-handler on page-load
-});
-</script>
-<script>
-    var tags = [
-"cabbage",
-"carrot",
-"cucumber",
-"egg",
-"rice",
-"onion"
-];
-$( "#keyword" ).autocomplete({
-  source: function( request, response ) {
-          var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
-          response( $.grep( tags, function( item ){
-<!--              console.log(item);-->
-              return matcher.test( item );
-          }) );
-      },
-     select: function( event, ui ) {
-      <!-- removing the selected option from array-->
-     const index = tags.indexOf(ui.item.value);
-     if (index > -1) {
-     tags.splice(index, 1);
-      }
-<!--     type = document.createElement(ui.item.value);-->
-<!--     document.getElementById("parent").appendChild(type);-->
-     var para = document.createElement("BUTTON");
-     para.className += "btn";
-     var para1=document.createElement("I");
-     para1.innerHTML=ui.item.value;
-     para1.className += "fa fa-close";
-     para.innerHTML = para1.outerHTML;
-     para1.remove();
-     para.style.cssText='background-color: DodgerBlue;border: none; color: white; padding: 12px 16px; margin-right:50 px; font-size: 16px; cursor: pointer;';
-<!--     para:hover{background-color: #4169e1;};-->
-     para.setAttribute("onmouseover","this.style.backgroundColor='#4169e1'");
-     para.setAttribute("onmouseout","this.style.backgroundColor='DodgerBlue'");
-     para.setAttribute("id",ui.item.value);
-     para.setAttribute("key",1);
-<!--     para.setAttribute("onclick",myFunction(ui.item.value));-->
-<!--     para.addEventListener("click", myFunction(ui.item.value, false);-->
-<!--myFunction(ui.item.value)-->
-<!--     console.log(para.class);-->
-
-<!--  var t = document.createTextNode(ui.item.value);-->
-
-<!--  para.appendChild(t);-->
-  document.getElementById("parent").appendChild(para);
-
-<!--  var variable=document.getElementById(ui.item.value);-->
-
-
-  document.getElementById("parent").appendChild (document.createTextNode(" "));
-  ui.item.value=null;
-  var targetDiv = document.getElementById("parent").querySelectorAll("BUTTON");
-<!--  console.log(targetDiv[0].textContent);-->
-<!--  console.log(targetDiv[0].class);-->
-<!--  console.log(targetDiv.length);-->
-  foo();
-<!--      appendTo: "#parent" ;-->
-      console.log( ui.item.label, ui.item.value );
-       }
-
-});
-
-<!--$( ".selector" ).autocomplete({-->
-<!--  appendTo: "#parent"-->
-<!--});-->
-
-
-<!--function showResult(event, ui) {-->
-<!-- // var s=text(ui.item.value);-->
-<!--   $('#parent').append(ui.item.label)-->
-<!-- }-->
-
-
-</script>
-<script type="text/javascript">
-       function myFunction(a) {
-      console.log("upcoming value");
-      console.log(a);
-      var myobj = document.getElementById(a);
-      myobj.remove();
-      tags.push(a);
-<!--     if(myobj)-->
-<!--     {-->
-<!--      console.log("hola hola");-->
-<!--      console.log(a);-->
-<!--      console.log(a);-->
-<!--      if(myobj.getAttribute("key")==1)-->
-<!--      {-->
-<!--      console.log(11);-->
-<!--      myobj.setAttribute("key",2);-->
-<!--      }-->
-<!--      else if(myobj.getAttribute("key")==2)-->
-<!--      {-->
-<!--        console.log(22);-->
-<!--        myobj.remove();-->
-<!--      }-->
-<!--     }-->
-<!--     else-->
-<!--     {-->
-<!--     console.log("gola gola");-->
-<!--     }-->
-     return false;
-   }
-</script>
-<script th:inline="javascript">
-    function foo() {
-    var targetDiv = document.getElementById("parent").querySelectorAll("BUTTON");
-
-<!--    s = targetDiv.join("+");-->
-    var len=targetDiv.length;
-<!--    alert(targetDiv[len-1].textContent);-->
-    var tar1=[];
-    for(i=0;i<len;i++)
-    {
-<!--     tar1[i]=targetDiv[i].textContent;-->
-<!--     console.log(targetDiv[i].textContent);-->
-     var el=targetDiv[i];
-<!--     console.log(el.textContent || el.innerText || '');-->
-        tar1[i]=(el.textContent || el.innerText || '');
-
-    }
-      var elliment=targetDiv[len-1];
-       elliment.onclick = function(){
-     myFunction(tar1[len-1]);
-   }
-<!--          elliment.setAttribute("onclick",myFunction(tar1[len-1]));-->
-<!--    s = tar1[0]+tar1[1];-->
-      s=tar1.join("+");
-
-<!--      th:value=s;-->
-       var attr = document.createAttribute("th:value");
-       attr.value = s;
-       var h = document.getElementById("keyword");
-       h.setAttributeNode(attr);
-       alert(document.getElementById("keyword").getAttribute("th:value"));
-       document.getElementById("keyword1").value=s;
-       console.log( document.getElementById("keyword1").value);
-       return true;
 }
 </script>
 </html>
